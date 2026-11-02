@@ -1,0 +1,182 @@
+/*
+Theme Name: Cuidado Felino
+Description: Tema personalizado para un blog de cuidado felino. Usa Bootstrap 5, un Custom Post Type "Guías" y una taxonomía "Tipos de cuidado".
+Author: Fernanda Riffo
+Version: 1.0.0
+Text Domain: cuidado-felino
+*/
+:root {
+    --cf-primary: #d9694b;
+    --cf-primary-dark: #b9502f;
+    --cf-dark: #2f3349;
+    --cf-soft: #f7f3ea;
+    --cf-accent: #7fb69a;
+    --cf-text: #3b3d4a;
+    --cf-radius: 14px;
+}
+
+body {
+    color: var(--cf-text);
+    background-color: #fffdf9;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+}
+h1, h2, h3, h4, h5 { color: var(--cf-dark); font-weight: 700; }
+a { color: var(--cf-primary); }
+a:hover { color: var(--cf-primary-dark); }
+
+.cf-navbar { background-color: var(--cf-dark); }
+.cf-navbar .navbar-brand { font-weight: 700; letter-spacing: .3px; }
+.cf-navbar .navbar-nav { list-style: none; padding-left: 0; margin-bottom: 0; }
+.cf-navbar .nav-link { color: rgba(255, 255, 255, .85); padding: .6rem 1rem; }
+.cf-navbar .nav-link:hover,
+.cf-navbar .nav-link.active { color: #fff; }
+
+.cf-hero {
+    background:
+        linear-gradient(90deg, rgba(255, 251, 246, .96) 0%, rgba(255, 251, 246, .85) 40%, rgba(255, 251, 246, 0) 72%),
+        url('assets/img/hero.jpg') right center / cover no-repeat;
+    padding: 6rem 0;
+    border-bottom: 1px solid #efe6d6;
+}
+.cf-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+.cf-hero p.lead { max-width: 38rem; }
+
+.btn-cf {
+    background-color: var(--cf-primary);
+    border-color: var(--cf-primary);
+    color: #fff;
+    border-radius: 50rem;
+    padding: .6rem 1.4rem;
+}
+.btn-cf:hover { background-color: var(--cf-primary-dark); border-color: var(--cf-primary-dark); color: #fff; }
+.btn-outline-cf {
+    border: 2px solid var(--cf-primary);
+    color: var(--cf-primary);
+    border-radius: 50rem;
+    padding: .35rem 1.1rem;
+}
+.btn-outline-cf:hover { background-color: var(--cf-primary); color: #fff; }
+
+.cf-section-title { margin-bottom: .4rem; }
+.cf-term-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-left: 6px solid var(--cf-accent);
+    padding-left: .8rem;
+    margin-bottom: 1.2rem;
+}
+
+.cf-card {
+    border: 0;
+    border-radius: var(--cf-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(47, 51, 73, .08);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.cf-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(47, 51, 73, .14); }
+.cf-card .card-title a { color: var(--cf-dark); text-decoration: none; }
+.cf-card .card-title a:hover { color: var(--cf-primary); }
+.cf-card .card-img-top { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
+.cf-placeholder {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--cf-accent), #b7d9c6);
+}
+
+.cf-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+.cf-badge a {
+    display: inline-block;
+    background: var(--cf-soft);
+    color: var(--cf-dark);
+    border-radius: 50rem;
+    padding: .2rem .8rem;
+    font-size: .85rem;
+    text-decoration: none;
+    margin-right: .3rem;
+}
+
+.cf-page-title { margin-bottom: 1rem; }
+.cf-content img { max-width: 100%; height: auto; border-radius: var(--cf-radius); }
+.cf-featured { border-radius: var(--cf-radius); margin-bottom: 1.5rem; max-width: 100%; height: auto; }
+
+.pagination, .nav-links { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 2rem; }
+.page-numbers {
+    padding: .35rem .8rem;
+    border: 1px solid #e4dccb;
+    border-radius: 8px;
+    text-decoration: none;
+}
+.page-numbers.current { background: var(--cf-primary); border-color: var(--cf-primary); color: #fff; }
+
+.cf-footer { background-color: var(--cf-dark); color: rgba(255, 255, 255, .85); }
+
+/* Artículo centrado (reemplaza estilos en línea) */
+.cf-article { max-width: 780px; margin-left: auto; margin-right: auto; }
+.cf-narrow { max-width: 420px; }
+.text-cf { color: var(--cf-primary); }
+
+/* Buscador y formularios */
+.cf-search .form-control { min-width: 11rem; }
+.cf-search .btn-cf { padding: .3rem .9rem; }
+.cf-form .form-control:focus,
+.cf-form .form-select:focus,
+.cf-search .form-control:focus {
+    border-color: var(--cf-primary);
+    box-shadow: 0 0 0 .25rem rgba(217, 105, 75, .2);
+}
+.cf-form .form-check-input:checked {
+    background-color: var(--cf-primary);
+    border-color: var(--cf-primary);
+}
+
+/* Tabla de guías */
+.cf-table caption { caption-side: top; color: var(--cf-text); font-weight: 600; }
+.cf-table thead th { background-color: var(--cf-dark); color: #fff; }
+
+/* Datos de las guías (ACF) y etiquetas */
+.cf-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; font-size: .85rem; color: #6b6e7c; }
+.cf-nivel { background: var(--cf-soft); color: var(--cf-dark); border-radius: 50rem; padding: .05rem .6rem; }
+.cf-consejo {
+    background: var(--cf-soft);
+    border-left: 6px solid var(--cf-accent);
+    border-radius: var(--cf-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.cf-tags a {
+    display: inline-block;
+    background: var(--cf-soft);
+    color: var(--cf-dark);
+    border-radius: 50rem;
+    padding: .2rem .8rem;
+    font-size: .85rem;
+    text-decoration: none;
+    margin-right: .3rem;
+}
+.cf-tags a:hover { background: var(--cf-accent); color: #fff; }
+
+/* Botón volver arriba */
+.cf-subir {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    z-index: 1030;
+}
+
+@media (max-width: 767.98px) {
+    .cf-hero {
+        background:
+            linear-gradient(180deg, rgba(255, 251, 246, .92) 0%, rgba(255, 251, 246, .8) 100%),
+            url('assets/img/hero.jpg') center / cover no-repeat;
+        padding: 3.5rem 0;
+    }
+}
